@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  web:
+    stdin_open: true # prevent immediate exit 0
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    stdin_open: true # prevent immediate exit 0
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
