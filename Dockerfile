@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json .
 RUN ["npm", "install"]
 COPY . .
-CMD ["npm", "build"]
+RUN ["npm", "run", "build"]
 
 # run phase
 FROM nginx:latest
