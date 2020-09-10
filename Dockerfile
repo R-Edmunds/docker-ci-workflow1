@@ -1,13 +1,13 @@
 # build phase
 FROM node:alpine AS build
-WORKDIR /app/
+WORKDIR /app
 COPY package.json .
 RUN ["npm", "install"]
 COPY . .
-CMD ["npm", "run", "build"]
+CMD ["npm", "build"]
 
 # run phase
 FROM nginx:latest
-WORKDIR /usr/share/nginx/html/
-COPY --from=build /app/build/. .
+WORKDIR /usr/share/nginx/html
+COPY --from=build /app/build .
 # nginx image executes process by default
