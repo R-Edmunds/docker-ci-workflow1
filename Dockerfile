@@ -8,5 +8,6 @@ CMD ["npm", "run", "build"]
 
 # run phase
 FROM nginx:latest
-COPY --from=builder /app/build /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+COPY --from=builder /app/build .
 # nginx image executes process by default
