@@ -6,4 +6,4 @@ before_install:
   - docker build --tag roblobob/docker-ci-workflow1 -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true roblobob/docker-ci-workflow1 npm run test
+  - docker run --rm -e CI=true roblobob/docker-ci-workflow1 npm run test
