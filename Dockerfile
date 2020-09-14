@@ -8,6 +8,8 @@ RUN ["npm", "run", "build"]
 
 # run phase
 FROM nginx:latest
+# EXPOSE required for AWS build
+EXPOSE 80
 WORKDIR /usr/share/nginx/html
 COPY --from=build /app/build .
 # nginx image executes process by default
